@@ -35,15 +35,22 @@ jobs:
           echo "Tag version: $TAG"
           pnpm version $TAG --no-git-tag-version
 
-      - name: Publish to npm
-        run: pnpm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
       - name: Push updated package.json back to repo
         run: |
           git config user.name "liteyuki-flow"
           git config user.email "liteyuki-flow@liteyuki.org"
           git add package.json
           git commit -m "📦 chore: sync version from tag $TAG [skip ci]" || echo "No changes to commit"
-          git push origin HEAD:main
+          
+      - name: Publish to npm
+        run: pnpm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Push changes
+        run: |
+          git push origin HEAD:main || echo "No changes to push"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
