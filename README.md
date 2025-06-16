@@ -31,6 +31,7 @@ const snakeCase = camelToSnakeStr('helloWorld'); // 'hello_world'
 
 ```typescript
 import {snakeToCamelObj, camelToSnakeObj} from 'field-conv';
+
 const camelCaseObj = snakeToCamelObj({hello_world: 'value'}); // {helloWorld: 'value'}
 const snakeCaseObj = camelToSnakeObj({helloWorld: 'value'}); // {hello_world: 'value'}
 ```

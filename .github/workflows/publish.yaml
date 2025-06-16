@@ -40,6 +40,7 @@ jobs:
           git config user.name "liteyuki-flow"
           git config user.email "liteyuki-flow@liteyuki.org"
           git add package.json
+          git add dist/
           git commit -m "📦 chore: sync version from tag $TAG [skip ci]" || echo "No changes to commit"
 
       - name: Publish to npm
