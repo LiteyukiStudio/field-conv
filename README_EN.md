@@ -2,13 +2,13 @@
 
 [简体中文](./README.md) | [English](./README_EN.md)
 
-使用TypeScript编写的字段转换器
+A field converter written in TypeScript
 
-解决API字段风格和Node字段风格不一致的问题。
+Solves the inconsistency between API field styles and Node field styles.
 
-专为代码洁癖症患者开发
+Developed especially for code perfectionists.
 
-## 安装
+## Installation
 
 ```bash
 npm install field-conv
@@ -18,29 +18,29 @@ pnpm add field-conv
 yarn add field-conv
 ```
 
-## 使用
+## Usage
 
-字符转换
+### String Conversion
 
 ```typescript
-import {snakeToCamelStr, camelToSnakeStr} from 'field-conv';
+import { snakeToCamelStr, camelToSnakeStr } from 'field-conv';
 
 const camelCase = snakeToCamelStr('hello_world'); // 'helloWorld'
 const snakeCase = camelToSnakeStr('helloWorld'); // 'hello_world'
 ```
 
-对象转换(支持嵌套递归转换)
+### Object Conversion (supports nested recursive conversion)
 
 ```typescript
-import {snakeToCamelObj, camelToSnakeObj} from 'field-conv';
+import { snakeToCamelObj, camelToSnakeObj } from 'field-conv';
 
-const camelCaseObj = snakeToCamelObj({hello_world: 'value'}); // {helloWorld: 'value'}
-const snakeCaseObj = camelToSnakeObj({helloWorld: 'value'}); // {hello_world: 'value'}
+const camelCaseObj = snakeToCamelObj({ hello_world: 'value' }); // { helloWorld: 'value' }
+const snakeCaseObj = camelToSnakeObj({ helloWorld: 'value' }); // { hello_world: 'value' }
 ```
 
-## 最佳实践
+## Best Practices
 
-在客户端，对axios client进行封装，从而避免繁琐的手动转换
+### On the client side, wrap your axios client to avoid tedious manual conversion
 
 ```typescript
 import axios from "axios";
@@ -74,7 +74,7 @@ axiosInstance.interceptors.response.use(
 export default axiosInstance;
 ```
 
-在服务端，使用中间件进行转换
+### On the server side, use middleware for conversion
 
 ```typescript
 import { Request, Response, NextFunction } from 'express';
@@ -101,9 +101,9 @@ export function convertResponseFields(req: Request, res: Response, next: NextFun
 }
 ```
 
-## 其他
+## Others
 
-一些常见的转换用例
+Some common conversion examples
 
 ```bash
 # camelCase -> snake_case
