@@ -41,9 +41,9 @@ jobs:
           git config user.email "liteyuki-flow@liteyuki.org"
           git add package.json
           git commit -m "📦 chore: sync version from tag $TAG [skip ci]" || echo "No changes to commit"
-          
+
       - name: Publish to npm
-        run: pnpm publish --access public
+        run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
