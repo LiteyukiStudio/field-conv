@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "commonjs",
+    "outDir": "dist",
+    "lib": ["es2019", "dom"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "declaration": true,           // 生成 .d.ts 文件
+    "emitDeclarationOnly": false,  // 同时生成 js 和 d.ts
+    "strict": true,
+    "types": ["node"]
+  },
+  "include": ["src"]
+}
